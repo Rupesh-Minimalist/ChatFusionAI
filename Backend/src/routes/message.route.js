@@ -4,8 +4,7 @@ import {isLoggedIn} from "../middlewares/isLoggedIn.js"
 
 const router=express.Router()
 
-router.route("/chats/:id").get(isLoggedIn,getMessage)
 router.route("/send/:recieverId").post(isLoggedIn,sendMessage)
-
+router.route("/chats/:id").get(isLoggedIn,getMessage)
 
 export default router

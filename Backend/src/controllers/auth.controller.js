@@ -21,10 +21,10 @@ const RegisterUser=async(req,res)=>{
         })
     }
 
-    //is user available
+    //is user exist
 
     const existed_user=await User.findOne({username})
-
+ 
     if(existed_user){
         return res.status(400).json({
             error:"User Already Registered, Login !"
