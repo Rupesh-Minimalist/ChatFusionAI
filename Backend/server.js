@@ -5,6 +5,7 @@ import connectToDB from "./src/db/connectToDB.js"
 import authRouter from "./src/routes/auth.route.js"
 import messageRouter from "./src/routes/message.route.js"
 import userRouter from "./src/routes/user.route.js"
+import cors from "cors"
 
 const PORT=process.env.PORT || 5000
 const app=express()
@@ -16,6 +17,10 @@ dotenv.config({path:"./.env"})
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
+app.use(cors({
+    origin:process.env.ORIGIN,
+    credentials:true
+}))
 
 app.use("/api/v1/auth",authRouter)
 app.use("/api/v1/messages",messageRouter)

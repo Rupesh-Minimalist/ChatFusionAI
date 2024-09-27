@@ -8,7 +8,7 @@ const SendHeader = () => {
     <div className="flex justify-between bg-green-500 rounded-xl items-center">
       <div className="flex items-center gap-3 px-3 py-1 w-full text-white font-semibold text-xl ">
         <img src="https://www.clipartmax.com/png/small/277-2772135_female-user-icon-download-female-person-icon.png" className="w-8 rounded-full" alt="" />
-        <h1>Disha Kataria</h1>
+        <h1>John Doe</h1>
 
       </div>
       <div className="flex gap-5 items-center " >

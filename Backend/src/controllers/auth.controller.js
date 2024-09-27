@@ -3,10 +3,10 @@ import { uploadOnCloudinary } from "../utils/cloudinary.js"
 
 const RegisterUser=async(req,res)=>{
 
-    const {fullName,username,password,confirmPassword,gender}=req.body
+    const {fullName,username,password,confirmPassword}=req.body
 
     //Validations
-    const fields=[fullName,username,password,confirmPassword,gender]
+    const fields=[fullName,username,password,confirmPassword]
     const isFieldValid=fields.every(field=>field.trim()!=="")
 
     if(!isFieldValid){
@@ -25,29 +25,29 @@ const RegisterUser=async(req,res)=>{
 
     const existed_user=await User.findOne({username})
  
-    if(existed_user){
-        return res.status(400).json({
-            error:"User Already Registered, Login !"
-        })
+    if (existed_user) {
+        return res.status(409).json({
+            error: "User Already Registered, Login!"
+        });
     }
 
     //Check for Images 
 
-    const profilePicLocalPath=req.file.path 
+    // const profilePicLocalPath=req.file.path 
 
-    if(!profilePicLocalPath){
-        return res.status(400).json({
-            error:"Profile Pic is missing"
-        })
-    }
+    // if(!profilePicLocalPath){
+    //     return res.status(400).json({
+    //         error:"Profile Pic is missing"
+    //     })
+    // }
 
-    const profilePic=await uploadOnCloudinary(profilePicLocalPath)
+    // const profilePic=await uploadOnCloudinary(profilePicLocalPath)
 
-    if(!profilePic){
-        return res.status(400).json({
-            error:"Error while uploading Profile Pic to cloudinary"
-        })
-    }
+    // if(!profilePic){
+    //     return res.status(400).json({
+    //         error:"Error while uploading Profile Pic to cloudinary"
+    //     })
+    // }
 
     // Create User
 
@@ -55,8 +55,8 @@ const RegisterUser=async(req,res)=>{
         fullName,
         username,
         password,
-        gender,
-        profilePic:profilePic.url 
+        // gender,
+        // profilePic:profilePic.url 
     })
 
     await user.save({validateBeforeSave:false})
@@ -70,7 +70,7 @@ const RegisterUser=async(req,res)=>{
     }
 
     return res.status(200).json({
-        message:"User Created",
+        message:"Account Succesfully Created !",
         isCreated
     })
 }

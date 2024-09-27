@@ -5,7 +5,7 @@ import SendMessage from "./SendMessage"
 
 const MessageContainer = () => {
 
-  const chatSelected=true
+  const chatSelected=false
 
   return (
 

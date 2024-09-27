@@ -5,16 +5,6 @@ const Messages = () => {
     <div className="h-full my-2 rounded-md overflow-y-scroll scrollbar-thin scroll">
       <Message/>
       <Message/>
-      {/* <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/>
-      <Message/> */}
     </div>
   )
 }
